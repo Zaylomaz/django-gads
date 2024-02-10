@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-from .views import index, load_ad_groups
+from .views import index, db_write
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('table/', index, name='index'),

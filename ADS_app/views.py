@@ -240,6 +240,13 @@ def insert_data():
                 location_name=location_name()
             )
 
+def db_write(request):
+    try:
+        insert_data()
+    except Exception as e:
+        print(e)
+    print('done')
+    return render(request, 'ADS_app/success.html')
 # def create_group():
 #     client = GoogleAdsClient.load_from_storage('google-ads.yaml')
 #     # data = request.json

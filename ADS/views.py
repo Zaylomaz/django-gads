@@ -34,7 +34,7 @@ def get_client_accounts():
     google_ads_service = client.get_service('GoogleAdsService')
     query = """ SELECT customer_client.id,customer_client.descriptive_name,customer_client.status,customer_client.manager,customer_client.level FROM customer_client WHERE customer_client.level <=1 """
     try:
-        response = google_ads_service.search_stream(customer_id=manager_customer_id, query=query)
+        response = google_ads_service.search(customer_id=manager_customer_id, query=query)
         result = []
         for batch in response:
             for row in batch.results:

@@ -20,10 +20,11 @@ client = GoogleAdsClient.load_from_storage('google-ads.yaml')
 # cur = conn.cursor()
 import csv
 
-
 manager_customer_id: str = '2718785142'
 # app = flask.Flask(__name__)
-client = GoogleAdsClient.load_from_storage('google-ads.yaml')
+client = GoogleAdsClient.load_from_storage('django_GAds/google-ads.yaml')
+
+
 # conn = mysql.connector.connect(host="127.0.0.1", port="3306", database="ads_api", user="root", password="root")
 # cur = conn.cursor()
 # from .models import Account, Campaign, Location, AdGroup
@@ -31,7 +32,7 @@ client = GoogleAdsClient.load_from_storage('google-ads.yaml')
 # функция получения списка аккаунтов под управлением менеджера manager_customer_id, возвращает список customer_id
 def get_client_accounts():
     google_ads_service = client.get_service('GoogleAdsService')
-    query =""" SELECT customer_client.id,customer_client.descriptive_name,customer_client.status,customer_client.manager,customer_client.level FROM customer_client WHERE customer_client.level <=1 """
+    query = """ SELECT customer_client.id,customer_client.descriptive_name,customer_client.status,customer_client.manager,customer_client.level FROM customer_client WHERE customer_client.level <=1 """
     try:
         response = google_ads_service.search_stream(customer_id=manager_customer_id, query=query)
         result = []
@@ -53,6 +54,8 @@ def get_client_accounts():
             if error.location:
                 for field_path_element in error.location.field_path_elements:
                     print(f'\tOn field: {field_path_element.field_name}')  #
+
+
 def get_account_budgets(client_customer_id):
     service = client.get_service('GoogleAdsService')
     query2 = f'''SELECT billing_setup.id FROM account_budget '''
@@ -66,8 +69,12 @@ def get_account_budgets(client_customer_id):
             return limit_type
     except GoogleAdsException as ex:
         print(f'Error with Google Ads API: {ex}')
+
+
 def _micros_to_currency(micros):
     return micros / 1000000.0 if micros is not None else None
+
+
 def get_invoice(client, customer_id, billing_setup_id):
     last_month = datetime.date.today().replace(day=1) - datetime.timedelta(days=1)
     response = client.get_service("InvoiceService").list_invoices(
@@ -127,6 +134,8 @@ def get_invoice(client, customer_id, billing_setup_id):
                 """
             )
             # [END get_invoices_1]
+
+
 def get_account_campaigns(client_customer_id):
     service = client.get_service('GoogleAdsService')
     query = f'''SELECT campaign.id, campaign.name, campaign.status FROM campaign  '''
@@ -148,6 +157,8 @@ def get_account_campaigns(client_customer_id):
             if error.location:
                 for field_path_element in error.location.field_path_elements:
                     print(f'\t\tOn field: {field_path_element.field_name}')
+
+
 def get_campaign_conversions(client_customer_id, campaign_id, date):
     service = client.get_service('GoogleAdsService')
     query = f'''SELECT campaign.id, metrics.conversions FROM campaign WHERE campaign.id = {campaign_id} AND segments.date = '{date}' '''
@@ -162,6 +173,8 @@ def get_campaign_conversions(client_customer_id, campaign_id, date):
             if error.location:
                 for field_path_element in error.location.field_path_elements:
                     print(f'\t\tOn field: {field_path_element.field_name}')
+
+
 def get_campaign_locations(client_customer_id, campaign_id):
     service = client.get_service('GoogleAdsService')
     query = f''' SELECT campaign_criterion.location.geo_target_constant FROM campaign_criterion WHERE campaign_criterion.campaign = 'customers/{client_customer_id}/campaigns/{campaign_id}'
@@ -177,6 +190,8 @@ def get_campaign_locations(client_customer_id, campaign_id):
             if error.location:
                 for field_path_element in error.location.field_path_elements:
                     print(f'\t\tOn field: {field_path_element.field_name}')
+
+
 def get_campaign_devices(client_customer_id, campaign_id):
     service = client.get_service('GoogleAdsService')
     query = f'''SELECT campaign_criterion.campaign, campaign_criterion.device.type, campaign_criterion.bid_modifier FROM campaign_criterion WHERE campaign_criterion.campaign = 'customers/{client_customer_id}/campaigns/{campaign_id}' AND campaign_criterion.type = 'DEVICE' '''
@@ -191,6 +206,8 @@ def get_campaign_devices(client_customer_id, campaign_id):
             if error.location:
                 for field_path_element in error.location.field_path_elements:
                     print(f'\t\tOn field: {field_path_element.field_name}')
+
+
 def get_groups(client_customer_id, campaign_id):
     service = client.get_service('AdGroupService')
     query = f'''SELECT ad_group.id, ad_group.name, ad_group.status FROM ad_group WHERE ad_group.campaign = 'customers/{client_customer_id}/campaigns/{campaign_id}' '''
@@ -205,6 +222,8 @@ def get_groups(client_customer_id, campaign_id):
             if error.location:
                 for field_path_element in error.location.field_path_elements:
                     print(f'\t\tOn field: {field_path_element.field_name}')
+
+
 def get_all_data():
     manager_customer_id = '2718785142'
     results = []
@@ -222,11 +241,14 @@ def get_all_data():
     print(results)
     return results
 
+
 def index(request):
     data = get_all_data()
     print(data)
     # insert_data()
     return render(request, '/index.html', {'data': data})
+
+
 def insert_data():
     data = get_all_data()
     for entry in data:
@@ -249,6 +271,7 @@ def insert_data():
                 location_name=location_name()
             )
 
+
 def db_write(request):
     try:
         insert_data()
@@ -256,8 +279,6 @@ def db_write(request):
         print(e)
     print('done!')
     return render(request, 'ADS_app/success.html')
-
-
 
 # def create_group():
 #     client = GoogleAdsClient.load_from_storage('google-ads.yaml')

@@ -26,7 +26,7 @@ manager_customer_id: str = '2718785142'
 client = GoogleAdsClient.load_from_storage('google-ads.yaml')
 # conn = mysql.connector.connect(host="127.0.0.1", port="3306", database="ads_api", user="root", password="root")
 # cur = conn.cursor()
-from .models import Account, Campaign, Location, AdGroup
+# from .models import Account, Campaign, Location, AdGroup
 
 # функция получения списка аккаунтов под управлением менеджера manager_customer_id, возвращает список customer_id
 def get_client_accounts():

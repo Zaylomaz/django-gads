@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-from .views import index, db_write
+from ADS import views
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('index/', index, name='index'),
-    # path('ad_groups/<int:campaign_id>/', views.load_ad_groups, name='load_ad_groups'),
-    # path('write/', db_write, name='load_ad_groups'),
-]
+        path('admin/', admin.site.urls),
+        path('index/', views.index, name='index'),
+        # path('ad_groups/<int:campaign_id>/', views.load_ad_groups, name='load_ad_groups'),
+        # path('write/', db_write, name='load_ad_groups'),
+    ]

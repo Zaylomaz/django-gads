@@ -225,7 +225,7 @@ def get_all_data():
 def index(request):
     data = get_all_data()
     print(data)
-    insert_data()
+    # insert_data()
     return render(request, '/index.html', {'data': data})
 def insert_data():
     data = get_all_data()

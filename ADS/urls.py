@@ -23,5 +23,5 @@ import ADS_app
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', ADS_app.index, name='index'),
+    path('index/', index, name='index1'),
 ]

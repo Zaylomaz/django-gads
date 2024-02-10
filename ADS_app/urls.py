@@ -21,7 +21,7 @@ from ADS_app import views
 
 urlpatterns = [
         path('admin/', admin.site.urls),
-        path('index/', views.index, name='index'),
+        path('', views.index, name='index2'),
         # path('ad_groups/<int:campaign_id>/', views.load_ad_groups, name='load_ad_groups'),
         # path('write/', db_write, name='load_ad_groups'),
     ]

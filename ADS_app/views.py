@@ -217,7 +217,7 @@ def index(request):
     data = get_all_data()
     print(data)
     insert_data()
-    return render(request, '/index.html',{'data': data})
+    return render(request, '/index.html', {'data': data})
 def insert_data():
     data = get_all_data()
     for entry in data:
@@ -245,8 +245,11 @@ def db_write(request):
         insert_data()
     except Exception as e:
         print(e)
-    print('done')
+    print('done!')
     return render(request, 'ADS_app/success.html')
+
+
+
 # def create_group():
 #     client = GoogleAdsClient.load_from_storage('google-ads.yaml')
 #     # data = request.json

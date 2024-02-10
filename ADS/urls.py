@@ -18,8 +18,10 @@ from django.contrib import admin
 from .views import index
 from django.urls import path
 
+import ADS_app
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
+    path('index/', ADS_app.index, name='index'),
 ]

@@ -20,7 +20,7 @@ from django.urls import include
 from .views import index, db_write
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
+    path('index/', index, name='index'),
     # path('ad_groups/<int:campaign_id>/', views.load_ad_groups, name='load_ad_groups'),
-    path('write/', db_write, name='load_ad_groups'),
+    # path('write/', db_write, name='load_ad_groups'),
 ]

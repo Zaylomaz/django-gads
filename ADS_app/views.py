@@ -217,7 +217,7 @@ def index(request):
     data = get_all_data()
     print(data)
     # insert_data()
-    return render(request, '/index.html', {'data': data})
+    return render(request, '/ADs_app/index.html', {'data': data})
 def insert_data():
     data = get_all_data()
     for entry in data:

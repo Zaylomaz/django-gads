@@ -1,0 +1,10 @@
+developer_token: "xwgasAWEEXyyggndLdGSqA"
+client_id: "674385878635-vrqdm0i77oe548d6dnhte2v0lljhb73d.apps.googleusercontent.com"
+client_secret: "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"
+refresh_token: "1//09plvbUosGPCBCgYIARAAGAkSNwF-L9IrsxiGpsuw-wGYIsSLTR69i6hSgNV_-wKSwN5h5MPDQ7v_Ncup3TVsPu4JFCvDg9bBoRk"
+login_customer_id: "2718785142"
+use_proto_plus: True
+
+# The following field is optional, and should only be included if you are using a service account.
+# path_to_private_key_file: INSERT_PATH_TO_YOUR_SERVICE_ACCOUNT_PRIVATE_KEY_FILE_HERE
+

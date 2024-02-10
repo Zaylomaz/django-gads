@@ -1,0 +1,40 @@
+/* Основной стиль таблицы */
+.table-material {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+    border-radius: 8px;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+}
+
+/* Стиль ячеек таблицы */
+.table-material th, .table-material td {
+    text-align: left;
+    padding: 16px;
+    font-size: 14px;
+}
+
+/* Стиль заголовка таблицы */
+.table-material th {
+    background-color: #6200ea;
+    color: white;
+}
+
+/* Стиль строк таблицы */
+.table-material tr:nth-child(even){background-color: #f2f2f2;}
+
+/* Стиль строки при наведении */
+.table-material tr:hover {background-color: #ddd;}
+
+/* Стиль ссылок в таблице */
+.table-material a {
+    color: #6200ea;
+    text-decoration: none;
+}
+
+/* Стиль для уменьшения тени при наведении */
+.table-material tr:hover {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}

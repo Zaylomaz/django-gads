@@ -22,7 +22,7 @@ import csv
 
 manager_customer_id: str = '2718785142'
 # app = flask.Flask(__name__)
-client = GoogleAdsClient.load_from_storage('django_GAds/google-ads.yaml')
+client = GoogleAdsClient.load_from_storage('google-ads.yaml')
 
 
 # conn = mysql.connector.connect(host="127.0.0.1", port="3306", database="ads_api", user="root", password="root")

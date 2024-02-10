@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--hxs&&&cs5c88okmd79-%db$e5!_0i5)c39%e0)=c5ty9vy*p(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '192.168.3.66']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '192.168.3.66', '34.159.221.228']
 
 STATIC_ROOT = '/static/'
 
@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'ADS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation

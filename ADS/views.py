@@ -31,11 +31,13 @@ client = GoogleAdsClient.load_from_storage('google-ads.yaml')
 
 # функция получения списка аккаунтов под управлением менеджера manager_customer_id, возвращает список customer_id
 def get_client_accounts():
+    manager_customer_id: str = '2718785142'
+    client = GoogleAdsClient.load_from_storage('google-ads.yaml')
     google_ads_service = client.get_service('GoogleAdsService')
+    result = []
     query = """ SELECT customer_client.id,customer_client.descriptive_name,customer_client.status,customer_client.manager,customer_client.level FROM customer_client WHERE customer_client.level <=1 """
     try:
         response = google_ads_service.search(customer_id=manager_customer_id, query=query)
-        result = []
         for batch in response:
             for row in batch.results:
                 customer_id = str(row.customer_client.id)

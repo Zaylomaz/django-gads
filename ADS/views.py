@@ -299,7 +299,7 @@ def insert_data():
 def index(request):
     data = get_all_data()
     print(data)
-    insert_data()
+    # insert_data()
     return render(request, 'ADS_app/index.html', {'data': data})
 def db_write(request):
     try:

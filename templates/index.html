@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="background-color: darkgray">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Кампании</title>
+    <style>
+        /* Основной стиль таблицы */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            border: 1px solid #6200ea;
+        }
+        
+        /* Стиль ячеек таблицы */
+        table th, .table-material td {
+            text-align: center;
+            font-size: 14px;
+            padding: 12px 15px;
+        }
+        
+        /* Стиль заголовка таблицы */
+        table th {
+            background-color: #4600ab;
+            color: white;
+            text-align: center;
+        }
+        table td {
+            padding-left: 8px;
+            border: 2px solid #6200ea;
+        }
+        /* Стиль строк таблицы */
+        table tr:nth-child(even){background-color: #f2f2f2;}
+        
+        /* Стиль строки при наведении */
+        table tr:hover {background-color: #ddd;}
+        
+        /* Стиль ссылок в таблице */
+        table a {
+            color: #458045;
+            text-decoration: none;
+        }
+        
+        /* Стиль для уменьшения тени при наведении */
+        table tr:hover {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        }
+
+        {#table { #}
+        {#    width: 100%;#}
+        {#    border-collapse: collapse;#}
+        {#}#}
+        {#table, th, td {#}
+        {#    border: 1px solid black;#}
+        {#}#}
+        {#th, td {#}
+        {#    padding: 10px;#}
+        {#    text-align: left;#}
+        {#} #}
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center">Кампании</h2>
+    <table>
+        <tr>
+            <th>Название аккаунта</th>
+            <th>ID аккаунта</th>
+            <th>Название кампании</th>
+            <th>ID кампании</th>
+            <th>Статус</th>
+            <th>Конверсии</th>
+            <th>Группы объявлений</th>
+            <th>Местоположения</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.account_name }}</td>
+            <td>{{ item.account_id }}</td>
+            <td>{{ item.campaign_name }}</td>
+            <td>{{ item.campaign_id }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.conversions }}</td>
+            <td>{{ item.groups }}</td>
+            <td>{{ item.locations }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
